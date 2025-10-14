@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Cosmic theme tokens */
+:root {
+  --nx-bg: #0b1020; /* deep space */
+  --nx-panel: #10172a; /* nebula panel */
+  --nx-accent: #8b5cf6; /* violet ion */
+  --nx-accent-2: #22d3ee; /* cyan comet */
+  --nx-text-dim: #a3a8c3;
+}
+
+html,
+body {
+  background: var(--nx-bg);
+}
+
+.nx-glow {
+  box-shadow: 0 0 0.5rem color-mix(in oklab, var(--nx-accent) 40%, transparent),
+    0 0 2.4rem color-mix(in oklab, var(--nx-accent-2) 35%, transparent);
+}
+
+/* subtle starry gradient behind content */
+.nx-sky {
+  background: radial-gradient(
+      1200px 800px at 80% -10%,
+      #1b2550 0%,
+      transparent 60%
+    ),
+    radial-gradient(1000px 600px at -10% 20%, #0e1a3a 0%, transparent 55%),
+    linear-gradient(#0b1020, #0b1020);
+}
