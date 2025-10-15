@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title>NovaHex Icon</title>
+  <desc>Hexagon with a radiant nova star and color trail, space-themed.</desc>
+  <defs>
+    <linearGradient id="gDeepSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1021"/>
+      <stop offset="100%" stop-color="#1A093A"/>
+    </linearGradient>
+    <linearGradient id="gSpectrum" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="20%" stop-color="#06B6D4"/>
+      <stop offset="40%" stop-color="#22C55E"/>
+      <stop offset="60%" stop-color="#F59E0B"/>
+      <stop offset="80%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="hexClip">
+      <polygon points="116,64 90,109.033 38,109.033 12,64 38,18.967 90,18.967"/>
+    </clipPath>
+  </defs>
+
+  <!-- Hexagon frame -->
+  <polygon points="116,64 90,109.033 38,109.033 12,64 38,18.967 90,18.967"
+           fill="url(#gDeepSpace)"
+           stroke="url(#gSpectrum)"
+           stroke-width="3.5" />
+
+  <!-- Color comet trail (clipped inside the hex) -->
+  <g clip-path="url(#hexClip)">
+    <path d="M24,84 C54,52 80,48 112,28" fill="none" stroke="url(#gSpectrum)" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+    <path d="M20,92 C50,60 78,56 108,36" fill="none" stroke="url(#gSpectrum)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- Nova star -->
+  <g filter="url(#glow)" transform="translate(0,0)">
+    <g transform="translate(68,52)">
+      <!-- 8-point star made from two overlapped 4-point stars -->
+      <path d="M0,-10 L2,-2 L10,0 L2,2 L0,10 L-2,2 L-10,0 L-2,-2 Z" fill="#FFFFFF" opacity="0.95"/>
+      <path d="M0,-12 L1.5,-1.5 L12,0 L1.5,1.5 L0,12 L-1.5,1.5 L-12,0 L-1.5,-1.5 Z" fill="#A5F3FC" opacity="0.45"/>
+    </g>
+  </g>
+
+  <!-- Small sparkles -->
+  <circle cx="46" cy="40" r="1.2" fill="#E5E7EB" />
+  <circle cx="52" cy="76" r="1.2" fill="#CBD5E1" />
+  <circle cx="84" cy="86" r="1.4" fill="#FDE68A" />
+  <circle cx="98" cy="52" r="1.1" fill="#FCA5A5" />
+</svg>

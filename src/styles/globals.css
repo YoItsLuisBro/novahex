@@ -2,10 +2,14 @@
 
 /* Cosmic theme tokens */
 :root {
-  --nx-bg: #0b1020; /* deep space */
-  --nx-panel: #10172a; /* nebula panel */
-  --nx-accent: #8b5cf6; /* violet ion */
-  --nx-accent-2: #22d3ee; /* cyan comet */
+  --nx-bg: #0b1020;
+  /* deep space */
+  --nx-panel: #10172a;
+  /* nebula panel */
+  --nx-accent: #8b5cf6;
+  /* violet ion */
+  --nx-accent-2: #22d3ee;
+  /* cyan comet */
   --nx-text-dim: #a3a8c3;
 }
 
@@ -21,11 +25,25 @@ body {
 
 /* subtle starry gradient behind content */
 .nx-sky {
-  background: radial-gradient(
-      1200px 800px at 80% -10%,
+  background: radial-gradient(1200px 800px at 80% -10%,
       #1b2550 0%,
-      transparent 60%
-    ),
+      transparent 60%),
     radial-gradient(1000px 600px at -10% 20%, #0e1a3a 0%, transparent 55%),
     linear-gradient(#0b1020, #0b1020);
+}
+
+/* form helpers */
+input::placeholder {
+  color: color-mix(in oklab, white 50%, transparent);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid color-mix(in oklab, white 40%, transparent);
+  outline-offset: 2px;
+}
+
+/* soft logo panel */
+.logo-chip {
+  background: color-mix(in oklab, white 6%, transparent);
 }

@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import { Rocket, Palette, Sparkles } from "lucide-react";
+import { Palette, Sparkles } from "lucide-react";
 
 export function Header() {
   const link = "px-3 py-2 rounded-xl text-sm font-medium text-white/80 hover:text-white hover:bg-white/5 transition";
@@ -8,9 +8,14 @@ export function Header() {
     <header className="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b border-white/5">
       <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-white">
-          <span className="inline-flex size-8 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-cyan-400 nx-glow">
-            <Rocket className="size-4" />
-          </span>
+          <img
+            src="/novahex-logo.svg"
+            alt="NovaHex"
+            className="h-8 w-8 rounded-xl nx-glow"
+            loading="eager"
+            width="32"
+            height="32"
+          />
           <span className="font-semibold tracking-wide" style={{ fontFamily: "Space Grotesk, ui-sans-serif" }}>
             NovaHex
           </span>
