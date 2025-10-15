@@ -7,7 +7,7 @@ export function Home() {
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
           Craft{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-300">
-            cosmic palettes
+            Cosmic Palettes
           </span>
         </h1>
         <p className="mt-4 text-white/70 max-w-2xl mx-auto">
