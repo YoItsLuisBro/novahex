@@ -1,6 +1,6 @@
 // src/components/PaletteCard.tsx
 import { useState } from "react";
-import { Heart, Share2 } from "lucide-react";
+import { Heart, Share2, Trash2 } from "lucide-react";
 import type { Palette } from "../store/palettes";
 import { usePalettes } from "../store/palettes";
 
@@ -8,9 +8,11 @@ type Props = {
   p: Palette;
   /** If provided, the card uses this to "save/like" instead of toggling store by id */
   onLike?: (p: Palette) => Promise<void> | void;
+  /** If provided, shows a remove button that calls this handler (used on Saved) */
+  onRemove?: (p: Palette) => Promise<void> | void;
 };
 
-export function PaletteCard({ p, onLike }: Props) {
+export function PaletteCard({ p, onLike, onRemove }: Props) {
   const toggleLike = usePalettes((s) => s.toggleLike);
   const [localLiked, setLocalLiked] = useState(!!p.liked);
 
@@ -23,6 +25,14 @@ export function PaletteCard({ p, onLike }: Props) {
     } else {
       toggleLike(p.id);
     }
+  }
+
+  async function handleRemove() {
+    if (!onRemove) return;
+    // optional confirm, remove if no longer want a dialog
+    const ok = confirm("Remove this pallet from saved?");
+    if (!ok) return;
+    await onRemove(p);
   }
 
   return (
@@ -53,6 +63,18 @@ export function PaletteCard({ p, onLike }: Props) {
             <Heart className={`size-4 ${liked ? "fill-pink-500" : ""}`} />
             {liked ? "Saved" : "Save"}
           </button>
+
+          {onRemove && (
+            <button
+              onClick={handleRemove}
+              className="inline-flex items-center gap-1 text-sm px-2 py-1 rounded-lg bg-white/10 text-white/80 hover:bg-white/15"
+              title="Remove from saved"
+            >
+              <Trash2 className="size-4" />
+              Remove
+            </button>
+          )}
+
           <button
             onClick={async () => {
               const url = `${location.origin}/explore`;

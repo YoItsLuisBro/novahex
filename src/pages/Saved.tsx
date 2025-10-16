@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { usePalettes } from "../store/palettes";
+import { usePalettes, type Palette } from "../store/palettes";
 import { PaletteCard } from "../components/PaletteCard";
 
 export function Saved() {
   const palettes = usePalettes((s) => s.palettes); // stable slice
+  const remove = usePalettes((s) => s.remove);
   const [likedOnly, setLikedOnly] = useState(false);
 
   const items = useMemo(
@@ -11,6 +12,10 @@ export function Saved() {
     [palettes, likedOnly]
   );
 
+  async function handleRemove(p: Palette) {
+    // Removing from store ensures the card unmounts immediately
+    remove(p.id);
+  }
   const none = items.length === 0;
 
   return (
@@ -43,7 +48,7 @@ export function Saved() {
       ) : (
         <div className="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((p) => (
-            <PaletteCard key={p.id} p={p} />
+            <PaletteCard key={p.id} p={p} onRemove={handleRemove} />
           ))}
         </div>
       )}
